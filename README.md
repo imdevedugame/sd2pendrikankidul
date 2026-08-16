@@ -1,58 +1,127 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SDN Pendrikan Lor 02 - Website & Admin Panel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem informasi dan company profile untuk SDN Pendrikan Lor 02 Semarang. Dibangun menggunakan teknologi web modern dengan fokus pada performa, estetika (*UI/UX*), dan kemudahan pengelolaan konten secara dinamis melalui Admin Panel.
 
-## About Laravel
+## 🏗 Arsitektur Sistem
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Proyek ini dibangun di atas tumpukan teknologi (Tech Stack) berikut:
+- **Framework Utama:** Laravel 11 (PHP 8.2+)
+- **Admin Panel:** Filament PHP v3
+- **Database:** MySQL
+- **Frontend Styling:** Vanilla CSS (CSS Variables) dengan pola desain komponen modern.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Flow Chart Arsitektur
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```mermaid
+graph TD
+    %% Entitas Pengguna
+    Pengunjung([Pengunjung Website])
+    Admin([Administrator])
+    
+    %% Antarmuka
+    subgraph Frontend [Tampilan Publik]
+        Blade[Blade Views]
+        CSS[Custom CSS]
+        Blade --- CSS
+    end
+    
+    subgraph Backend [Filament Admin Panel]
+        Dash[Dashboard & CRUD]
+    end
+    
+    %% Alur Pengunjung
+    Pengunjung -->|Akses URL| Blade
+    
+    %% Controller / Model
+    subgraph Core [Laravel Core]
+        Routes[Web Routes]
+        Controllers[Controllers]
+        Models[Eloquent Models]
+        Routes --> Controllers
+        Controllers --> Models
+    end
+    
+    %% Alur Admin
+    Admin -->|Login| Dash
+    Dash --> Models
+    
+    %% Database
+    DB[(MySQL Database)]
+    Models -->|Query| DB
+    
+    %% Hubungan Frontend ke Core
+    Blade -.->|Read Data| Routes
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## 🚀 Tutorial Menjalankan Program (Local Development)
 
-## Contributing
+Ikuti langkah-langkah di bawah ini untuk menjalankan website dan admin panel di komputer lokal (localhost).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Persyaratan
+- PHP versi 8.2 atau lebih baru.
+- Composer.
+- MySQL / MariaDB.
 
-## Code of Conduct
+### Langkah-langkah Instalasi
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Clone Repositori**
+   Unduh kode sumber ke dalam komputer Anda.
+   ```bash
+   git clone https://github.com/imdevedugame/sd2pendrikankidul.git
+   cd sd2pendrikankidul
+   ```
 
-## Security Vulnerabilities
+2. **Install Dependensi Composer**
+   ```bash
+   composer install
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. **Konfigurasi Environment**
+   Gandakan file `.env.example` menjadi `.env`.
+   ```bash
+   cp .env.example .env
+   ```
+   Buka file `.env` dan sesuaikan pengaturan database Anda:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=sd2pendrikankidul
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-## License
+4. **Generate Application Key**
+   ```bash
+   php artisan key:generate
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. **Migrasi Database dan Seeding**
+   Buat database kosong bernama `sd2pendrikankidul` di MySQL (lewat phpMyAdmin atau terminal). Lalu jalankan perintah ini untuk membangun tabel sekaligus mengisi data awal (Profil Sekolah, Berita, Guru, dll):
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
+
+6. **Tautkan Folder Storage**
+   Agar gambar-gambar yang di-*upload* melalui admin panel bisa diakses publik:
+   ```bash
+   php artisan storage:link
+   ```
+
+7. **Jalankan Server Lokal**
+   ```bash
+   php artisan serve
+   ```
+   Akses website di: `http://localhost:8000`
+
+---
+
+## 🔐 Akses Admin Panel
+
+Untuk mengelola konten (Ubah profil sekolah, tambah berita, foto guru, link lomba, dll), masuk ke halaman Admin Panel:
+
+- **URL:** `http://localhost:8000/admin`
+- **Email:** `admin@sdnpendrikanlor02.id`
+- **Password:** `password`
+
+Anda bisa merubah password ini atau menambah pengguna lain dari menu **Users** di dalam Admin Panel.

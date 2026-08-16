@@ -18,14 +18,17 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Administrator',
+            'email' => 'admin@sdnpendrikanlor02.id',
+            'password' => bcrypt('password'),
         ]);
 
         $this->call([
             TeacherSeeder::class,
             PostSeeder::class,
             GalleryItemSeeder::class,
+            SchoolProfileSeeder::class,
+            MenuLinkSeeder::class,
         ]);
     }
 }
