@@ -27,7 +27,7 @@ class HeroSliderResource extends Resource
                 \Filament\Forms\Components\TextInput::make('subtitle')->maxLength(255),
                 \Filament\Forms\Components\FileUpload::make('image')->image()->directory('sliders')->required()->columnSpanFull(),
                 \Filament\Forms\Components\TextInput::make('button_text')->maxLength(255),
-                \Filament\Forms\Components\TextInput::make('button_url')->url()->maxLength(255),
+                \Filament\Forms\Components\TextInput::make('button_url')->maxLength(255),
                 \Filament\Forms\Components\Toggle::make('is_active')->default(true),
                 \Filament\Forms\Components\TextInput::make('order')->numeric()->default(0),
             ]);
