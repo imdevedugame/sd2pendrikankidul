@@ -7,6 +7,7 @@
     <meta name="description" content="Website Resmi SD Negeri Pendrikan Lor 02 Semarang.">
     <link rel="shortcut icon" href="{{ asset('images/favicon.jpeg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @stack('styles')
 </head>
 <body>
 
@@ -29,10 +30,11 @@
                 
                 <li><a href="{{ route('gallery') }}" class="{{ request()->routeIs('gallery') ? 'active' : '' }}">Galeri</a></li>
                 
+                <li><a href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'active' : '' }}">Berita</a></li>
+
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle {{ request()->routeIs('news') ? 'active' : '' }}">Pengumuman</a>
+                    <a href="#" class="dropdown-toggle">Pengumuman</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('news') }}">Semua Berita</a></li>
                         @if(isset($pengumumanLinks))
                             @foreach($pengumumanLinks as $link)
                                 <li><a href="{{ $link->url }}" target="_blank">{{ $link->title }}</a></li>
@@ -42,7 +44,7 @@
                 </li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">PPDB</a>
+                    <a href="#" class="dropdown-toggle">SPMB</a>
                     <ul class="dropdown-menu">
                         @if(isset($ppdbLinks))
                             @foreach($ppdbLinks as $link)
@@ -59,7 +61,13 @@
                     </ul>
                 </li>
                 
-                <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Kontak</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle {{ request()->routeIs('contact') ? 'active' : '' }}">Hubungi Kami</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('contact') }}">Kontak</a></li>
+                        <li><a href="{{ route('contact') }}#pengaduan">Pengaduan</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -109,5 +117,6 @@
         </div>
     </footer>
 
+    @stack('scripts')
 </body>
 </html>

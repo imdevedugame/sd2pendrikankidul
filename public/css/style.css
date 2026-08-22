@@ -30,6 +30,8 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--background);
+    background-image: radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+    background-size: 24px 24px;
     color: var(--text-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -224,12 +226,13 @@ a:hover {
     gap: 2rem;
 }
 .card {
-    background: var(--surface);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: var(--transition);
-    border: none;
+    border: 1px solid rgba(255,255,255,0.4);
 }
 .card:hover {
     transform: translateY(-5px);
@@ -260,7 +263,8 @@ a:hover {
 
 /* Footer */
 footer {
-    background-color: var(--text-main);
+    background: linear-gradient(135deg, var(--text-main) 0%, #0F172A 100%);
+    border-top: 5px solid var(--primary);
     color: white;
     padding: 4rem 0 2rem;
     margin-top: 4rem;

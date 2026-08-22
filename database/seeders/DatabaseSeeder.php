@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             GalleryItemSeeder::class,
             SchoolProfileSeeder::class,
             MenuLinkSeeder::class,
+            HeroSliderSeeder::class,
         ]);
     }
 }

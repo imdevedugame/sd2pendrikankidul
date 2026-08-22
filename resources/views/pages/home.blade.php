@@ -1,20 +1,120 @@
 @extends('layouts.app')
 @section('title', 'Beranda - SDN Pendrikan Lor 02 Semarang')
 
+@push('styles')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<style>
+    .hero-slider-section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .swiper {
+        position: absolute !important;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 0;
+    }
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .swiper-slide::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.3));
+        z-index: 1;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        padding-bottom: 5rem;
+    }
+    .hero-content h1 {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero-content p {
+        color: #e2e8f0;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+</style>
+@endpush
+
 @section('content')
+@php
+    $sliders = \App\Models\HeroSlider::where('is_active', true)->orderBy('order')->get();
+@endphp
+
 <!-- Hero Section -->
-<section class="hero" style="padding-bottom: 12rem; {{ isset($schoolProfile) && $schoolProfile->hero_image ? 'background-image: url(' . asset('storage/' . $schoolProfile->hero_image) . ');' : '' }}">
-    <div class="container hero-content">
-        <h1>{{ isset($schoolProfile) && $schoolProfile->hero_title ? $schoolProfile->hero_title : 'Selamat Datang di SDN Pendrikan Lor 02' }}</h1>
-        <p>{{ isset($schoolProfile) && $schoolProfile->hero_subtitle ? $schoolProfile->hero_subtitle : 'Membentuk generasi penerus bangsa yang berakhlak mulia, cerdas, dan berprestasi.' }}</p>
+<section class="hero-slider-section">
+    @if($sliders->count() > 0)
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            @foreach($sliders as $slider)
+            <div class="swiper-slide" style="background-image: url('{{ \Illuminate\Support\Str::startsWith($slider->image, 'sliders/') ? asset('storage/' . $slider->image) : asset('images/' . $slider->image) }}');">
+                <div class="container hero-content text-center">
+                    <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem;">{{ $slider->title }}</h1>
+                    <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 2rem;">{{ $slider->subtitle }}</p>
+                    @if($slider->button_text)
+                    <a href="{{ $slider->button_url ?? '#' }}" class="btn btn-primary" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">{{ $slider->button_text }}</a>
+                    @endif
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    @else
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; {{ isset($schoolProfile) && $schoolProfile->hero_image ? 'background-image: url(' . asset('storage/' . $schoolProfile->hero_image) . ');' : 'background-image: url(' . asset('images/hero.jpeg') . ');' }} background-size: cover; background-position: center; z-index: 0;">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.3));"></div>
+    </div>
+    <div class="container hero-content text-center">
+        <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem;">{{ isset($schoolProfile) && $schoolProfile->hero_title ? $schoolProfile->hero_title : 'Selamat Datang di SDN Pendrikan Lor 02' }}</h1>
+        <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 2rem;">{{ isset($schoolProfile) && $schoolProfile->hero_subtitle ? $schoolProfile->hero_subtitle : 'Membentuk generasi penerus bangsa yang berakhlak mulia, cerdas, dan berprestasi.' }}</p>
         <a href="{{ route('about') }}" class="btn btn-secondary" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">Pelajari Lebih Lanjut</a>
     </div>
-    <div class="custom-shape-divider-bottom">
+    @endif
+
+    <div class="custom-shape-divider-bottom" style="z-index: 10;">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.34,201.39,98.4,242.4,86.2,283.4,70.36,321.39,56.44Z" class="shape-fill"></path>
         </svg>
     </div>
 </section>
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    if(document.querySelector('.mySwiper')) {
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 0,
+            centeredSlides: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    }
+</script>
+@endpush
 
 <!-- Sambutan -->
 <section class="section">

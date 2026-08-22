@@ -25,4 +25,35 @@
         </div>
     </div>
 </section>
+
+@php
+    $facilities = \App\Models\Facility::orderBy('order')->get();
+@endphp
+
+@if($facilities->count() > 0)
+<section class="section" style="background-color: white;">
+    <div class="container">
+        <h2 class="section-title">Sarana dan Prasarana</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            @foreach($facilities as $facility)
+            <div class="card" style="overflow: hidden;">
+                @if($facility->photo)
+                <img src="{{ asset('storage/' . $facility->photo) }}" alt="{{ $facility->name }}" class="card-img" style="height: 200px; object-fit: cover; width: 100%;">
+                @else
+                <div style="height: 200px; background-color: #e2e8f0; display: flex; align-items: center; justify-content: center; width: 100%;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#94a3b8" style="width: 48px; height: 48px;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                    </svg>
+                </div>
+                @endif
+                <div class="card-body">
+                    <h3 class="card-title">{{ $facility->name }}</h3>
+                    <p class="text-muted">{{ $facility->description }}</p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
 @endsection
