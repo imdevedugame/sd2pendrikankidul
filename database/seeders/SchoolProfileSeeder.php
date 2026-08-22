@@ -14,15 +14,16 @@ class SchoolProfileSeeder extends Seeder
     {
         \App\Models\SchoolProfile::create([
             'name' => 'SDN Pendrikan Lor 02',
-            'address' => 'Jl. Poncowolo Barat VIII No. 495, Kecamatan Semarang Tengah, Kota Semarang, Provinsi Jawa Tengah.',
+            'address' => 'Jl. Poncowolo Barat V No.650b, Pindrikan Lor, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50131',
             'phone' => '(024) 3539427',
             'email' => 'sdpelor02@hotmail.com',
-            'youtube_url' => 'https://www.youtube.com/channel/UCD1xESkO2MDRHwE15qlVEMw',
-            'vision' => '"Beriman, Berilmu, Berpretasi Serta Berbudi Pekerti Luhur"',
-            'mission' => "1. Menciptakan siswa yang beriman dan bertaqwa kepada Tuhan yang Maha Esa.\n2. Mengembangkan minat dan bakat siswa sehingga dapat meraih prestasi.\n3. Melaksanakan pendidikan sesuai dengan karakter Bangsa Indonesia\n4. Pemberdayaan guru melalui Sistem Pembinaan Guru Profesional secara teratur dan berkelanjutan\n5. Meningkatkan kepedulian dan kemandirian masyarakat di sekitarnya agar ikut mendorong tercapainya keseimbangan antara Iptek dan Imtaq",
-            'history' => "SDN Pendrikan Lor 02 berdiri pada tahun 1950 yang berada di dekat pasar bulu, ± 200 M dari letak sekolah saat ini. Yang dibangun secara gotong royong oleh masyarakat Sekitar. Tahun 1970 Bangunan dipindah oleh pemerintah Kota Semarang di Jalan Poncowolo Barat dan sampai saat ini.",
-            'hero_title' => 'Cerdas, Berakhlak, dan Berprestasi!',
-            'hero_subtitle' => 'Kami berkomitmen untuk memberikan pendidikan terbaik dan membentuk karakter generasi penerus bangsa yang unggul di era digital.',
+            'youtube_url' => 'https://youtube.com/',
+            'vision' => 'Terwujudnya Peserta Didik Yang Bertaqwa Kepada Tuhan Yang Maha Esa, Berkarakter, Berprestasi, Berwawasan Global Dan Peduli Lingkungan.',
+            'mission' => "1. Menanamkan keyakinan/aqidah melalui pengamalan ajaran agama\n2. Mengoptimalkan proses pembelajaran dan bimbingan\n3. Mengembangkan bidang ilmu pengetahuan dan teknologi berdasarkan minat, bakat, dan potensi peserta didik.\n4. Membina kemandirian peserta didik melalui kegiatan pembiasaan, kewirausahaan, dan pengembangan diri.",
+            'history' => 'SD Negeri Pendrikan Lor 02 adalah sebuah institusi pendidikan tingkat dasar yang berdedikasi tinggi...',
+            'hero_title' => 'Selamat Datang di SDN Pendrikan Lor 02',
+            'hero_subtitle' => 'Membentuk generasi penerus bangsa yang berakhlak mulia, cerdas, dan berprestasi.',
+            'map_iframe' => '<iframe src="https://maps.google.com/maps?q=Jl.%20Poncowolo%20Barat%20V%20No.650b,%20Pindrikan%20Lor,%20Semarang&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
             'hero_image' => 'background.jpg'
         ]);
     }

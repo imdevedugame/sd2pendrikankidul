@@ -9,13 +9,17 @@
         <div class="about-content">
             <div>
                 <h3 class="mb-3">Informasi Kontak</h3>
-                <p class="text-muted mb-2"><strong>Alamat:</strong> Jl. Poncowolo Barat VIII No. 495, Semarang Tengah</p>
-                <p class="text-muted mb-2"><strong>Telepon:</strong> (024) 3539427</p>
-                <p class="text-muted mb-4"><strong>Email:</strong> sdpelor02@hotmail.com</p>
+                <p class="text-muted mb-2"><strong>Alamat:</strong> {{ isset($schoolProfile) ? $schoolProfile->address : 'Alamat Belum Diatur' }}</p>
+                <p class="text-muted mb-2"><strong>Telepon:</strong> {{ isset($schoolProfile) ? $schoolProfile->phone : 'Telepon Belum Diatur' }}</p>
+                <p class="text-muted mb-4"><strong>Email:</strong> {{ isset($schoolProfile) ? $schoolProfile->email : 'Email Belum Diatur' }}</p>
                 
                 <h3 class="mb-2">Lokasi Kami</h3>
-                <div style="width: 100%; height: 300px; background-color: var(--border); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                    [Peta Google Maps dapat disematkan di sini]
+                <div style="width: 100%; height: 300px; background-color: var(--border); border-radius: var(--radius-md); overflow: hidden; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                    @if(isset($schoolProfile) && $schoolProfile->map_iframe)
+                        {!! $schoolProfile->map_iframe !!}
+                    @else
+                        [Peta Google Maps Belum Diatur]
+                    @endif
                 </div>
             </div>
             

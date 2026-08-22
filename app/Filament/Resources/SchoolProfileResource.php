@@ -29,6 +29,7 @@ class SchoolProfileResource extends Resource
                     \Filament\Forms\Components\TextInput::make('phone'),
                     \Filament\Forms\Components\TextInput::make('youtube_url')->url(),
                     \Filament\Forms\Components\Textarea::make('address')->columnSpanFull(),
+                    \Filament\Forms\Components\Textarea::make('map_iframe')->label('Peta (Google Maps Iframe)')->rows(3)->columnSpanFull(),
                 ])->columns(2),
                 \Filament\Forms\Components\Section::make('Profil & Sejarah')->schema([
                     \Filament\Forms\Components\Textarea::make('vision')->rows(3),

@@ -19,6 +19,16 @@ class MessageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-ellipsis';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('is_read', false)->count() ?: null;
+    }
+
+    public static function getNavigationBadgeColor(): ?string|array
+    {
+        return static::getModel()::where('is_read', false)->count() > 0 ? 'danger' : null;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
