@@ -24,7 +24,7 @@ class MessageResource extends Resource
         return static::getModel()::where('is_read', false)->count() ?: null;
     }
 
-    public static function getNavigationBadgeColor(): ?string|array
+    public static function getNavigationBadgeColor(): string|array|null
     {
         return static::getModel()::where('is_read', false)->count() > 0 ? 'danger' : null;
     }
