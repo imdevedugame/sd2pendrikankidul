@@ -2,25 +2,25 @@
 @section('title', 'Profil Sekolah - SDN Pendrikan Lor 02 Semarang')
 
 @section('content')
-<section class="section">
+<section class="section bg-white">
     <div class="container">
-        <h2 class="section-title">Profil Sekolah</h2>
+        <h2 class="section-title" data-aos="fade-up">Profil Sekolah</h2>
         <div class="about-content">
-            <div>
+            <div data-aos="fade-right">
                 <h3 class="mb-3">Sejarah Singkat {{ isset($schoolProfile) ? $schoolProfile->name : 'SDN Pendrikan Lor 02' }}</h3>
-                <p class="text-muted mb-3" style="text-align: justify; white-space: pre-wrap;">{{ isset($schoolProfile) ? $schoolProfile->history : 'Sejarah belum ditambahkan.' }}</p>
+                <p class="text-muted mb-3" style="text-align: justify; white-space: pre-wrap; font-size: 1.1rem; line-height: 1.8;">{{ isset($schoolProfile) ? $schoolProfile->history : 'Sejarah belum ditambahkan.' }}</p>
                 
                 <h3 class="mb-3 mt-5">Visi dan Misi</h3>
-                <div class="card p-4" style="background-color: var(--primary-light); color: white; padding: 1.5rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
-                    <h4 class="mb-2" style="color: white;">VISI</h4>
-                    <p class="mb-4" style="font-style: italic; white-space: pre-wrap;">{{ isset($schoolProfile) ? $schoolProfile->vision : 'Visi belum ditambahkan.' }}</p>
+                <div class="card p-4" style="background-color: var(--primary); color: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem; box-shadow: var(--shadow-lg);">
+                    <h4 class="mb-2" style="color: white; font-size: 1.25rem;">VISI</h4>
+                    <p class="mb-4" style="font-style: italic; white-space: pre-wrap; font-size: 1.1rem;">{{ isset($schoolProfile) ? $schoolProfile->vision : 'Visi belum ditambahkan.' }}</p>
                     
-                    <h4 class="mb-2" style="color: white;">MISI</h4>
-                    <div style="white-space: pre-wrap;">{{ isset($schoolProfile) ? $schoolProfile->mission : 'Misi belum ditambahkan.' }}</div>
+                    <h4 class="mb-2" style="color: white; font-size: 1.25rem;">MISI</h4>
+                    <div style="white-space: pre-wrap; font-size: 1.1rem; line-height: 1.8;">{{ isset($schoolProfile) ? $schoolProfile->mission : 'Misi belum ditambahkan.' }}</div>
                 </div>
             </div>
-            <div>
-                <img src="{{ asset('images/gerbang.jpg') }}" alt="Gerbang Sekolah" class="about-image">
+            <div data-aos="fade-left">
+                <img src="{{ asset('images/gerbang.jpg') }}" alt="Gerbang Sekolah" class="about-image" style="box-shadow: var(--shadow-lg); border-radius: var(--radius-xl);">
             </div>
         </div>
     </div>
@@ -31,14 +31,14 @@
 @endphp
 
 @if($facilities->count() > 0)
-<section class="section" style="background-color: white;">
+<section class="section bg-alternate">
     <div class="container">
-        <h2 class="section-title">Sarana dan Prasarana</h2>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <h2 class="section-title" data-aos="fade-up">Sarana dan Prasarana</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));" data-aos="fade-up" data-aos-delay="100">
             @foreach($facilities as $facility)
-            <div class="card" style="overflow: hidden;">
+            <div class="card" style="overflow: hidden; border: none;">
                 @if($facility->photo)
-                <img src="{{ asset('storage/' . $facility->photo) }}" alt="{{ $facility->name }}" class="card-img" style="height: 200px; object-fit: cover; width: 100%;">
+                <img src="{{ asset('storage/' . $facility->photo) }}" alt="{{ $facility->name }}" class="card-img" style="height: 220px; object-fit: cover; width: 100%;">
                 @else
                 <div style="height: 200px; background-color: #e2e8f0; display: flex; align-items: center; justify-content: center; width: 100%;">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#94a3b8" style="width: 48px; height: 48px;">
@@ -46,9 +46,9 @@
                     </svg>
                 </div>
                 @endif
-                <div class="card-body">
-                    <h3 class="card-title">{{ $facility->name }}</h3>
-                    <p class="text-muted">{{ $facility->description }}</p>
+                <div class="card-body" style="padding: 1.5rem;">
+                    <h3 class="card-title" style="margin-bottom: 0.5rem; font-size: 1.25rem;">{{ $facility->name }}</h3>
+                    <p class="text-muted" style="line-height: 1.6;">{{ $facility->description }}</p>
                 </div>
             </div>
             @endforeach

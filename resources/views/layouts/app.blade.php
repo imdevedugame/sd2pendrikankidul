@@ -6,6 +6,7 @@
     <title>@yield('title', 'SDN Pendrikan Lor 02 Semarang')</title>
     <meta name="description" content="Website Resmi SD Negeri Pendrikan Lor 02 Semarang.">
     <link rel="shortcut icon" href="{{ asset('images/favicon.jpeg') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @stack('styles')
 </head>
@@ -43,15 +44,8 @@
                     </ul>
                 </li>
                 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">SPMB</a>
-                    <ul class="dropdown-menu">
-                        @if(isset($ppdbLinks))
-                            @foreach($ppdbLinks as $link)
-                                <li><a href="{{ $link->url }}" target="_blank">{{ $link->title }}</a></li>
-                            @endforeach
-                        @endif
-                    </ul>
+                <li>
+                    <a href="http://ppd.semarangkota.go.id/" target="_blank" style="background: var(--primary); color: white; padding: 0.4rem 1.2rem; border-radius: 2rem; font-weight: 600; box-shadow: var(--shadow-sm);">SPMB</a>
                 </li>
 
                 <li class="dropdown">
@@ -117,6 +111,14 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+      });
+    </script>
     @stack('scripts')
 </body>
 </html>

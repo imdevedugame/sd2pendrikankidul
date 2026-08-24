@@ -65,7 +65,7 @@
         <div class="swiper-wrapper">
             @foreach($sliders as $slider)
             <div class="swiper-slide" style="background-image: url('{{ \Illuminate\Support\Str::startsWith($slider->image, 'sliders/') ? asset('storage/' . $slider->image) : asset('images/' . $slider->image) }}');">
-                <div class="container hero-content text-center">
+                <div class="container hero-content text-center" data-aos="fade-up">
                     <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem;">{{ $slider->title }}</h1>
                     <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 2rem;">{{ $slider->subtitle }}</p>
                     @if($slider->button_text)
@@ -83,7 +83,7 @@
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; {{ isset($schoolProfile) && $schoolProfile->hero_image ? 'background-image: url(' . asset('storage/' . $schoolProfile->hero_image) . ');' : 'background-image: url(' . asset('images/hero.jpeg') . ');' }} background-size: cover; background-position: center; z-index: 0;">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.3));"></div>
     </div>
-    <div class="container hero-content text-center">
+    <div class="container hero-content text-center" data-aos="fade-up">
         <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem;">{{ isset($schoolProfile) && $schoolProfile->hero_title ? $schoolProfile->hero_title : 'Selamat Datang di SDN Pendrikan Lor 02' }}</h1>
         <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 2rem;">{{ isset($schoolProfile) && $schoolProfile->hero_subtitle ? $schoolProfile->hero_subtitle : 'Membentuk generasi penerus bangsa yang berakhlak mulia, cerdas, dan berprestasi.' }}</p>
         <a href="{{ route('about') }}" class="btn btn-secondary" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">Pelajari Lebih Lanjut</a>
@@ -122,67 +122,71 @@
 @endpush
 
 <!-- Sambutan -->
-<section class="section">
+<section class="section bg-white">
     <div class="container">
-        <h2 class="section-title">Sambutan Kepala Sekolah</h2>
+        <h2 class="section-title" data-aos="fade-up">Sambutan Kepala Sekolah</h2>
         <div class="about-content">
-            <div>
-                <img src="{{ asset('images/kepsek.jpeg') }}" alt="Kepala Sekolah" class="about-image" style="max-width: 300px; display: block; margin: 0 auto;">
+            <div data-aos="fade-right">
+                <img src="{{ asset('images/kepsek.jpeg') }}" alt="Kepala Sekolah" class="about-image" style="max-width: 350px; display: block; margin: 0 auto;">
             </div>
-            <div>
-                <h3 class="mb-2">Assalamualaikum warohmatullahi wabarokatuh..</h3>
-                <p class="mb-3 text-muted">
-                    Puji syukur kepada Alloh SWT, Tuhan Yang Maha Esa yang telah memberikan rahmat dan hidayahNya sehingga website SD Negeri Pendrikan Lor 02 Semarang ini dapat terbit.
-                    Semoga dengan adanya website ini dapat membantu dan bermanfaat, terutama informasi yang berhubungan dengan pendidikan, ilmu pengetahuan dan informasi seputar SD Negeri Pendrikan Lor 02 Semarang.
-                </p>
-                <p class="font-bold">Rumiati, S.Pd.</p>
-                <p class="text-primary">Kepala Sekolah</p>
+            <div data-aos="fade-left">
+                <div style="background: var(--background); padding: 2.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); position: relative; z-index: 2;">
+                    <h3 class="mb-2" style="font-size: 1.5rem;">Assalamualaikum warohmatullahi wabarokatuh..</h3>
+                    <p class="mb-4 text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                        Puji syukur kepada Alloh SWT, Tuhan Yang Maha Esa yang telah memberikan rahmat dan hidayahNya sehingga website SD Negeri Pendrikan Lor 02 Semarang ini dapat terbit.
+                        Semoga dengan adanya website ini dapat membantu dan bermanfaat, terutama informasi yang berhubungan dengan pendidikan, ilmu pengetahuan dan informasi seputar sekolah kami.
+                    </p>
+                    <div style="border-left: 4px solid var(--primary); padding-left: 1rem;">
+                        <p class="font-bold" style="font-size: 1.25rem;">Rumiati, S.Pd.</p>
+                        <p class="text-primary">Kepala Sekolah</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Berita Terbaru -->
-<section class="section" style="background-color: white;">
+<section class="section bg-alternate">
     <div class="container">
-        <h2 class="section-title">Berita & Pengumuman Terbaru</h2>
-        <div class="grid">
+        <h2 class="section-title" data-aos="fade-up">Berita & Pengumuman Terbaru</h2>
+        <div class="grid" data-aos="fade-up" data-aos-delay="100">
             @foreach($news as $post)
-            <div class="card">
+            <div class="card" style="display: flex; flex-direction: column;">
                 @if($post->image)
-                <img src="{{ asset('images/' . $post->image) }}" alt="{{ $post->title }}" class="card-img" style="height: 180px; width: 100%; object-fit: cover;">
+                <img src="{{ asset('images/' . $post->image) }}" alt="{{ $post->title }}" class="card-img" style="height: 220px; width: 100%; object-fit: cover;">
                 @endif
-                <div class="card-body">
-                    <span class="badge">{{ strtoupper($post->type) }}</span>
-                    <h3 class="card-title"><a href="{{ route('news.detail', $post->slug) }}">{{ $post->title }}</a></h3>
-                    <p class="text-muted mb-3">{{ Str::limit($post->content, 100) }}</p>
-                    <a href="{{ route('news.detail', $post->slug) }}" class="text-primary font-bold">Baca Selengkapnya &rarr;</a>
+                <div class="card-body" style="flex: 1; display: flex; flex-direction: column;">
+                    <span class="badge" style="align-self: flex-start;">{{ strtoupper($post->type) }}</span>
+                    <h3 class="card-title" style="flex: 1;"><a href="{{ route('news.detail', $post->slug) }}">{{ $post->title }}</a></h3>
+                    <p class="text-muted mb-3">{{ Str::limit($post->content, 120) }}</p>
+                    <a href="{{ route('news.detail', $post->slug) }}" class="text-primary font-bold mt-auto" style="display: inline-block;">Baca Selengkapnya &rarr;</a>
                 </div>
             </div>
             @endforeach
         </div>
-        <div class="text-center mt-4">
-            <a href="{{ route('news') }}" class="btn btn-primary">Lihat Semua Berita</a>
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="200">
+            <a href="{{ route('news') }}" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 2rem;">Lihat Semua Berita</a>
         </div>
     </div>
 </section>
 
 <!-- Galeri Singkat -->
-<section class="section">
+<section class="section bg-white">
     <div class="container">
-        <h2 class="section-title">Galeri Kegiatan</h2>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        <h2 class="section-title" data-aos="fade-up">Galeri Kegiatan</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));" data-aos="fade-up" data-aos-delay="100">
             @foreach($gallery as $item)
             <div class="card">
-                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}" class="card-img">
-                <div class="card-body" style="padding: 1rem;">
-                    <p class="font-bold text-center">{{ $item->title }}</p>
+                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}" class="card-img" style="height: 250px;">
+                <div class="card-body" style="padding: 1.5rem;">
+                    <p class="font-bold text-center" style="font-size: 1.1rem;">{{ $item->title }}</p>
                 </div>
             </div>
             @endforeach
         </div>
-        <div class="text-center mt-4">
-            <a href="{{ route('gallery') }}" class="btn btn-secondary">Lihat Galeri Lengkap</a>
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="200">
+            <a href="{{ route('gallery') }}" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 2rem;">Lihat Galeri Lengkap</a>
         </div>
     </div>
 </section>
