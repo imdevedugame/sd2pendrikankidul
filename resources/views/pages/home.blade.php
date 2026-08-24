@@ -19,6 +19,8 @@
         z-index: 0;
     }
     .swiper-slide {
+        width: 100%;
+        height: 100%;
         background-size: cover;
         background-position: center;
         display: flex;
@@ -34,7 +36,7 @@
     }
     .hero-content {
         position: relative;
-        z-index: 2;
+        z-index: 20;
         padding-bottom: 5rem;
     }
     .hero-content h1 {
@@ -44,6 +46,9 @@
     .hero-content p {
         color: #e2e8f0;
         text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    .custom-shape-divider-bottom {
+        pointer-events: none;
     }
 </style>
 @endpush

@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/profil', [PageController::class, 'about'])->name('about');
+Route::redirect('/about', '/profil');
 Route::get('/guru', [PageController::class, 'teachers'])->name('teachers');
 Route::get('/galeri', [PageController::class, 'gallery'])->name('gallery');
 Route::get('/berita', [PageController::class, 'news'])->name('news');
