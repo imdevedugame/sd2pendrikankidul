@@ -5,7 +5,7 @@
 <section class="section bg-white">
     <div class="container">
         <h1 class="section-title" data-aos="fade-up">Galeri Kegiatan</h1>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));" data-aos="fade-up" data-aos-delay="100">
             @foreach($galleries as $item)
             <div class="card" style="border: none;">
                 <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}" class="card-img" style="height: 250px;">

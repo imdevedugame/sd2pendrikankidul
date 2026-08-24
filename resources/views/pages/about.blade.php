@@ -34,7 +34,7 @@
 <section class="section bg-alternate">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Sarana dan Prasarana</h2>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));" data-aos="fade-up" data-aos-delay="100">
             @foreach($facilities as $facility)
             <div class="card" style="overflow: hidden; border: none;">
                 @if($facility->photo)

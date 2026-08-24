@@ -5,7 +5,7 @@
 <section class="section bg-alternate">
     <div class="container">
         <h1 class="section-title" data-aos="fade-up">Guru & Tenaga Kependidikan</h1>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem;" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 3rem;" data-aos="fade-up" data-aos-delay="100">
             @foreach($teachers as $teacher)
             <div class="card text-center" style="padding: 2rem; border: none; background: white; box-shadow: var(--shadow-md);">
                 @if($teacher->photo)

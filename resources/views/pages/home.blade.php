@@ -56,7 +56,7 @@
 @section('content')
 @php
     $sliders = \App\Models\HeroSlider::where('is_active', true)->orderBy('order')->get();
-    $popularNews = \App\Models\News::latest()->take(3)->get();
+    $popularNews = \App\Models\Post::where('type', 'news')->latest()->take(3)->get();
 @endphp
 
 <!-- Hero Section -->
@@ -101,7 +101,7 @@
 <!-- Overlapping News Strip -->
 @if($popularNews->count() > 0)
 <div class="container overlap-container" data-aos="fade-up" data-aos-delay="200">
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
         @foreach($popularNews as $post)
         <a href="{{ route('news.detail', $post->slug) }}" class="overlap-card">
             @if($post->image)
@@ -148,7 +148,7 @@
 <section class="section bg-white">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up" style="text-align: left; margin-bottom: 3rem;">Layanan & Program <br>Unggulan Sekolah</h2>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;" data-aos="fade-up" data-aos-delay="100">
             <div class="card-komdigi">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 48px; height: 48px; margin-bottom: 1.5rem;">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.315 48.315 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
@@ -245,7 +245,7 @@
 <section class="section bg-white">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Galeri Kegiatan</h2>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));" data-aos="fade-up" data-aos-delay="100">
+        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));" data-aos="fade-up" data-aos-delay="100">
             @foreach($gallery as $item)
             <div class="card">
                 <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}" class="card-img" style="height: 250px;">
