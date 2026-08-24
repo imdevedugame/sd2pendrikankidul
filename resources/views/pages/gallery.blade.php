@@ -5,14 +5,14 @@
 <section class="section bg-white">
     <div class="container">
         <h1 class="section-title" data-aos="fade-up">Galeri Kegiatan</h1>
-        <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));" data-aos="fade-up" data-aos-delay="100">
+        <div class="gallery-masonry" data-aos="fade-up" data-aos-delay="100">
             @foreach($galleries as $item)
-            <div class="card" style="border: none;">
-                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}" class="card-img" style="height: 250px;">
-                <div class="card-body" style="padding: 1.5rem;">
-                    <p class="font-bold text-center" style="font-size: 1.1rem;">{{ $item->title }}</p>
+            <div class="gallery-item">
+                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}">
+                <div class="gallery-overlay">
+                    <h3>{{ $item->title }}</h3>
                     @if($item->description)
-                    <p class="text-muted text-center">{{ $item->description }}</p>
+                    <p>{{ Str::limit($item->description, 60) }}</p>
                     @endif
                 </div>
             </div>
