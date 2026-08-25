@@ -7,17 +7,19 @@ Repositori ini memuat kode sumber untuk portal web resmi dan Sistem Manajemen Ko
 ## ✨ Fitur Utama
 
 - **Portal Publik (Frontend)**
-  - **Beranda Dinamis:** Menampilkan *slider banner* interaktif, berita terbaru, dan cuplikan galeri kegiatan.
-  - **Profil Sekolah:** Memuat sejarah, visi, misi, dan daftar sarana prasarana sekolah secara lengkap.
+  - **Beranda Dinamis:** Menampilkan *slider banner* interaktif, berita terbaru, Layanan & Program Unggulan sekolah, dan cuplikan galeri kegiatan.
+  - **Layanan & Program Detail:** Konten program unggulan (seperti Akademik, Ekstrakurikuler) yang sepenuhnya dikelola dari admin, dilengkapi halaman rincian khusus dengan gambar dan penjelasan lengkap.
+  - **Profil Sekolah:** Memuat sejarah, visi, misi, dan daftar fasilitas sarana prasarana sekolah secara lengkap.
+  - **Galeri Cerdas (Bento Grid):** Tata letak foto galeri menggunakan desain *Bento Grid* yang rapat, estetis, dan sangat responsif di berbagai perangkat.
   - **Direktori Guru:** Menampilkan profil tenaga pendidik dan kependidikan.
-  - **Pusat Informasi:** Pemisahan kategori konten menjadi Berita dan Pengumuman (termasuk pendaftaran SPMB).
-  - **Hubungi Kami:** Terintegrasi dengan Peta Lokasi (Google Maps) dan formulir pengaduan publik.
+  - **Pusat Informasi:** Pemisahan kategori konten menjadi Berita dan Pengumuman (termasuk akses SPMB di ujung kanan *navbar*).
+  - **Hubungi Kami & Pengaduan:** Pemisahan halaman khusus untuk info kontak (Alamat & Google Maps) dan halaman formulir Pengaduan yang cepat diakses melalui *Floating Action Button* (Tombol Mengambang) interaktif di setiap halaman.
   
 - **Panel Admin (Backend - Filament)**
-  - **Dashboard Cerdas:** Menampilkan ringkasan statistik (jumlah berita, pesan pengaduan baru, total guru).
-  - **Manajemen Konten:** CRUD (Create, Read, Update, Delete) untuk Berita, Pengumuman, Galeri, dan Profil Guru.
-  - **Pengaturan Profil:** Mengelola visi misi, alamat, *iframe* peta, serta tautan pendaftaran SPMB tanpa menyentuh kode.
-  - **Inboks Pengaduan:** Notifikasi otomatis dan lencana peringatan untuk pesan/pengaduan baru dari masyarakat yang belum dibaca.
+  - **Dashboard Statistik Cerdas:** Halaman awal admin dilengkapi ringkasan data *real-time* (Total Guru, Laporan Pengaduan, Berita & Info Publikasi).
+  - **Manajemen Konten:** CRUD (Create, Read, Update, Delete) untuk Berita, Pengumuman, Galeri, Program Unggulan, Fasilitas, dan Profil Guru.
+  - **Pengaturan Praktis:** Mengelola visi misi, alamat, *iframe* peta, serta tautan pendaftaran SPMB tanpa menyentuh kode sedikit pun.
+  - **Inboks Pengaduan:** Manajemen keluhan masyarakat dengan pelacakan status (*Pending, Diproses, Selesai*), dilengkapi **Lencana Merah (Badge Notifikasi)** untuk pesan baru yang belum dibaca.
 
 ---
 
