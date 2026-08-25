@@ -23,6 +23,16 @@ class ComplaintResource extends Resource
     
     protected static ?string $modelLabel = 'Pengaduan';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('is_read', false)->count() ?: null;
+    }
+
+    public static function getNavigationBadgeColor(): string|array|null
+    {
+        return static::getModel()::where('is_read', false)->count() > 0 ? 'danger' : null;
+    }
+
     public static function form(Form $form): Form
     {
         return $form
