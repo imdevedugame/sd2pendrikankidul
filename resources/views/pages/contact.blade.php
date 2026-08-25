@@ -33,38 +33,6 @@
                     @endif
                 </div>
             </div>
-            <div id="pengaduan" data-aos="fade-left">
-                <div class="card" style="padding: 2.5rem; background-color: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border-top: 5px solid var(--primary);">
-                    <h3 class="mb-4" style="font-size: 1.5rem;">Kirim Pesan / Pengaduan</h3>
-                    
-                    @if(session('success'))
-                        <div style="background-color: #d1fae5; color: #065f46; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    <form action="{{ route('contact.submit') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label for="name" class="form-label">Nama Lengkap</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label">Subjek</label>
-                            <input type="text" id="subject" name="subject" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Pesan</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Pesan</button>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </section>

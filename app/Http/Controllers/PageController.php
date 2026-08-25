@@ -10,7 +10,8 @@ class PageController extends Controller
     {
         $news = \App\Models\Post::where('type', 'news')->latest()->take(3)->get();
         $gallery = \App\Models\GalleryItem::latest()->take(4)->get();
-        return view('pages.home', compact('news', 'gallery'));
+        $programs = \App\Models\Program::where('is_active', true)->take(4)->get();
+        return view('pages.home', compact('news', 'gallery', 'programs'));
     }
 
     public function about()
@@ -42,21 +43,33 @@ class PageController extends Controller
         return view('pages.news_detail', compact('post'));
     }
 
+    public function programDetail($slug)
+    {
+        $program = \App\Models\Program::where('slug', $slug)->firstOrFail();
+        return view('pages.program_detail', compact('program'));
+    }
+
     public function contact()
     {
         return view('pages.contact');
     }
 
-    public function submitContact(\Illuminate\Http\Request $request)
+    public function pengaduan()
+    {
+        return view('pages.pengaduan');
+    }
+
+    public function submitPengaduan(\Illuminate\Http\Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'nullable|email',
+            'phone' => 'nullable',
             'message' => 'required',
         ]);
 
-        \App\Models\Message::create($request->all());
+        \App\Models\Complaint::create($request->all());
 
-        return back()->with('success', 'Pesan Anda berhasil dikirim.');
+        return back()->with('success', 'Pengaduan Anda berhasil dikirim.');
     }
 }

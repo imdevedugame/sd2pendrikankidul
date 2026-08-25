@@ -10,5 +10,7 @@ Route::get('/guru', [PageController::class, 'teachers'])->name('teachers');
 Route::get('/galeri', [PageController::class, 'gallery'])->name('gallery');
 Route::get('/berita', [PageController::class, 'news'])->name('news');
 Route::get('/berita/{slug}', [PageController::class, 'newsDetail'])->name('news.detail');
+Route::get('/program/{slug}', [PageController::class, 'programDetail'])->name('program.detail');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
-Route::post('/kontak', [PageController::class, 'submitContact'])->name('contact.submit');
+Route::get('/pengaduan', [PageController::class, 'pengaduan'])->name('pengaduan');
+Route::post('/pengaduan', [PageController::class, 'submitPengaduan'])->name('pengaduan.submit');

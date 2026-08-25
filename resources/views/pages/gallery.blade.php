@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="section-title" data-aos="fade-up">Galeri Kegiatan</h1>
         <div class="gallery-bento" data-aos="fade-up" data-aos-delay="100">
-            @foreach($galleries as $item)
+            @foreach($gallery as $item)
             <div class="gallery-item">
                 <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}">
                 <div class="gallery-overlay">
