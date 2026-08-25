@@ -158,6 +158,11 @@ a:hover {
 .navbar-nav > li:hover > a::after, .navbar-nav > li > a.active::after {
     width: 100%;
 }
+
+.navbar-nav > li > a.nav-btn-spmb::after {
+    display: none !important;
+}
+
 .navbar-nav > li > a.active {
     color: var(--primary);
 }

@@ -55,7 +55,7 @@
                 <li><a href="{{ route('pengaduan') }}" class="{{ request()->routeIs('pengaduan') ? 'active' : '' }}">Pengaduan</a></li>
                 
                 <li style="margin-left: 1rem;">
-                    <a href="http://ppd.semarangkota.go.id/" target="_blank" style="background: var(--primary); color: white; padding: 0.4rem 1.2rem; border-radius: 2rem; font-weight: 600; box-shadow: var(--shadow-sm);">SPMB</a>
+                    <a href="http://ppd.semarangkota.go.id/" target="_blank" class="nav-btn-spmb" style="background: var(--primary); color: white; padding: 0.4rem 1.2rem; border-radius: 2rem; font-weight: 600; box-shadow: var(--shadow-sm);">SPMB</a>
                 </li>
             </ul>
         </div>
