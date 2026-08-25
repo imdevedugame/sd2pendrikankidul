@@ -1,23 +1,13 @@
 <?php
-
 namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
-class HeroSliderSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-        \App\Models\HeroSlider::create([
-            'title' => 'Selamat Datang di SDN Pendrikan Lor 02',
-            'subtitle' => 'Membentuk generasi penerus bangsa yang berakhlak mulia, cerdas, dan berprestasi.',
-            'image' => 'hero.jpeg', // Fallback to public/images/hero.jpeg initially
-            'button_text' => 'Pelajari Lebih Lanjut',
-            'button_url' => '/about'
-        ]);
+class HeroSliderSeeder extends Seeder {
+    public function run(): void {
+        $slides = [
+            ['title' => 'Selamat Datang di SDN Pendrikan Lor 02', 'subtitle' => 'Membentuk generasi unggul dan berkarakter.', 'image' => 'hero.jpeg', 'button_text' => 'Profil Sekolah', 'button_url' => '/profil'],
+            ['title' => 'Fasilitas Belajar Modern', 'subtitle' => 'Lingkungan belajar yang aman, nyaman, dan digital.', 'image' => 'background.jpg', 'button_text' => 'Lihat Fasilitas', 'button_url' => '/profil#fasilitas'],
+            ['title' => 'Pendaftaran Siswa Baru 2026', 'subtitle' => 'Bergabunglah bersama kami untuk masa depan cerah.', 'image' => 'simulasi1.jpeg', 'button_text' => 'Cek SPMB', 'button_url' => 'http://ppd.semarangkota.go.id/'],
+        ];
+        foreach($slides as $s) { \App\Models\HeroSlider::create($s); }
     }
 }

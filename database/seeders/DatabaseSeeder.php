@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
             SchoolProfileSeeder::class,
             MenuLinkSeeder::class,
             HeroSliderSeeder::class,
+            FacilitySeeder::class,
+            ProgramSeeder::class,
         ]);
     }
 }
