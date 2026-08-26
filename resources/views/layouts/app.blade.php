@@ -55,7 +55,13 @@
                     </ul>
                 </li>
                 
-                <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Kontak</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Hubungi Kami</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Kontak</a></li>
+                        <li><a href="{{ route('pengaduan') }}" class="{{ request()->routeIs('pengaduan') ? 'active' : '' }}">Pengaduan</a></li>
+                    </ul>
+                </li>
 
                 
                 <li style="margin-left: 1rem;">

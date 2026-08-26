@@ -12,5 +12,5 @@ Route::get('/berita', [PageController::class, 'news'])->name('news');
 Route::get('/berita/{slug}', [PageController::class, 'newsDetail'])->name('news.detail');
 Route::get('/program/{slug}', [PageController::class, 'programDetail'])->name('program.detail');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
-
+Route::get('/pengaduan', [PageController::class, 'pengaduan'])->name('pengaduan');
 Route::post('/pengaduan', [PageController::class, 'submitPengaduan'])->name('pengaduan.submit');

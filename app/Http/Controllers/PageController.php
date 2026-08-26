@@ -56,6 +56,11 @@ class PageController extends Controller
 
 
 
+    public function pengaduan()
+    {
+        return view('pages.pengaduan');
+    }
+
     public function submitPengaduan(\Illuminate\Http\Request $request)
     {
         $request->validate([

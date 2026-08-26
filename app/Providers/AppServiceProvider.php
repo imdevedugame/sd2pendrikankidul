@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         try {
+            \Illuminate\Pagination\Paginator::useBootstrapFive();
             $schoolProfile = \App\Models\SchoolProfile::first();
             $pengumumanLinks = \App\Models\MenuLink::where('type', 'pengumuman')->where('is_active', true)->orderBy('order')->get();
             $ppdbLinks = \App\Models\MenuLink::where('type', 'ppdb')->where('is_active', true)->orderBy('order')->get();
