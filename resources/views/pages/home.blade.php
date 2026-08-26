@@ -205,30 +205,7 @@
     </div>
 </section>
 
-<!-- Berita Terbaru -->
-<section class="section bg-alternate">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Berita & Pengumuman Terbaru</h2>
-        <div class="grid" data-aos="fade-up" data-aos-delay="100">
-            @foreach($news as $post)
-            <div class="card" style="display: flex; flex-direction: column;">
-                @if($post->image)
-                <img src="{{ file_exists(public_path('images/' . $post->image)) ? asset('images/' . $post->image) : asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="card-img" style="height: 220px; width: 100%; object-fit: cover;">
-                @endif
-                <div class="card-body" style="flex: 1; display: flex; flex-direction: column;">
-                    <span class="badge" style="align-self: flex-start;">{{ strtoupper($post->type) }}</span>
-                    <h3 class="card-title" style="flex: 1;"><a href="{{ route('news.detail', $post->slug) }}">{{ $post->title }}</a></h3>
-                    <p class="text-muted mb-3">{{ Str::limit($post->content, 120) }}</p>
-                    <a href="{{ route('news.detail', $post->slug) }}" class="text-primary font-bold mt-auto" style="display: inline-block;">Baca Selengkapnya &rarr;</a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="200">
-            <a href="{{ route('news') }}" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 2rem;">Lihat Semua Berita</a>
-        </div>
-    </div>
-</section>
+
 
 <!-- Galeri Singkat -->
 <section class="section bg-white">
@@ -254,7 +231,7 @@
 </section>
 
 <!-- Floating Action Button for Pengaduan -->
-<a href="{{ route('pengaduan') }}" class="fab-pengaduan">
+<a href="mailto:{{ isset($schoolProfile) ? $schoolProfile->email : 'sdpelor02@hotmail.com' }}" class="fab-pengaduan" title="Hubungi Kami">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
     </svg>

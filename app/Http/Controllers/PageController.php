@@ -33,7 +33,7 @@ class PageController extends Controller
 
     public function news()
     {
-        $posts = \App\Models\Post::latest()->paginate(10);
+        $posts = \App\Models\Post::where('type', 'news')->latest()->paginate(6);
         return view('pages.news', compact('posts'));
     }
 
@@ -54,10 +54,7 @@ class PageController extends Controller
         return view('pages.contact');
     }
 
-    public function pengaduan()
-    {
-        return view('pages.pengaduan');
-    }
+
 
     public function submitPengaduan(\Illuminate\Http\Request $request)
     {

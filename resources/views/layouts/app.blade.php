@@ -34,7 +34,7 @@
                 <li><a href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'active' : '' }}">Berita</a></li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Pengumuman</a>
+                    <a href="#" class="dropdown-toggle">Prestasi</a>
                     <ul class="dropdown-menu">
                         @if(isset($pengumumanLinks))
                             @foreach($pengumumanLinks as $link)
@@ -56,17 +56,10 @@
                 </li>
                 
                 <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Kontak</a></li>
-                <li><a href="{{ route('pengaduan') }}" class="{{ request()->routeIs('pengaduan') ? 'active' : '' }}">Pengaduan</a></li>
+
                 
-                <li class="dropdown" style="margin-left: 1rem;">
-                    <a href="#" class="dropdown-toggle nav-btn-spmb" style="background: var(--primary); color: white; padding: 0.4rem 1.2rem; border-radius: 2rem; font-weight: 600; box-shadow: var(--shadow-sm);">SPMB</a>
-                    <ul class="dropdown-menu">
-                        @if(isset($ppdbLinks))
-                            @foreach($ppdbLinks as $link)
-                                <li><a href="{{ $link->url }}" target="_blank">{{ $link->title }}</a></li>
-                            @endforeach
-                        @endif
-                    </ul>
+                <li style="margin-left: 1rem;">
+                    <a href="https://spmb.semarangkota.go.id/" target="_blank" class="nav-btn-spmb" style="background: var(--primary); color: white; padding: 0.4rem 1.2rem; border-radius: 2rem; font-weight: 600; box-shadow: var(--shadow-sm);">SPMB</a>
                 </li>
             </ul>
         </div>

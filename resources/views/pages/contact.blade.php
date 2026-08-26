@@ -6,7 +6,8 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
         
-        <div class="about-content">
+        <div class="about-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+            <!-- Kolom Kiri: Informasi Kontak & Peta -->
             <div data-aos="fade-right">
                 <h3 class="mb-3" style="font-size: 1.5rem;">Informasi Kontak</h3>
                 <div style="background: var(--background); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
@@ -31,6 +32,39 @@
                     @else
                         [Peta Google Maps Belum Diatur]
                     @endif
+                </div>
+            </div>
+
+            <!-- Kolom Kanan: Formulir Pengaduan -->
+            <div data-aos="fade-left">
+                <h3 class="mb-3" style="font-size: 1.5rem;">Kirim Pesan / Pengaduan</h3>
+                <div class="card" style="padding: 2.5rem; background-color: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border-top: 5px solid var(--secondary);">
+                    @if(session('success'))
+                        <div style="background-color: #d1fae5; color: #065f46; padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('pengaduan.submit') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email (Opsional)</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Alamat email Anda">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">No. Handphone (Opsional)</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="No. HP / WhatsApp">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Isi Pengaduan / Pesan</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Jelaskan detail pengaduan atau pesan Anda..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary" style="width: 100%; font-size: 1.1rem; padding: 1rem; border-radius: var(--radius-md);">Kirim Pesan</button>
+                    </form>
                 </div>
             </div>
         </div>
