@@ -33,16 +33,7 @@
                 
                 <li><a href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'active' : '' }}">Berita</a></li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Prestasi</a>
-                    <ul class="dropdown-menu">
-                        @if(isset($pengumumanLinks))
-                            @foreach($pengumumanLinks as $link)
-                                <li><a href="{{ $link->url }}" target="_blank">{{ $link->title }}</a></li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </li>
+                <li><a href="https://sangjuara.semarangkota.go.id/kejuaraan_sekolah?tingkat=&sekolah=401&q=" target="_blank">Prestasi</a></li>
                 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Sosial Media</a>

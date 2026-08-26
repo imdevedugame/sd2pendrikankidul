@@ -4,7 +4,7 @@
 @section('content')
 <section class="section bg-white">
     <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
+        <h2 class="section-title" data-aos="fade-up">Kontak</h2>
         
         <div class="about-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: start;">
             <div data-aos="fade-right">
