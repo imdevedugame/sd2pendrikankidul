@@ -6,7 +6,7 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
         
-        <div class="about-content">
+        <div class="about-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: start;">
             <div data-aos="fade-right">
                 <h3 class="mb-3" style="font-size: 1.5rem;">Informasi Kontak</h3>
                 <div style="background: var(--background); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
@@ -23,8 +23,10 @@
                         <span><strong>Email:</strong><br> {{ isset($schoolProfile) ? $schoolProfile->email : 'Email Belum Diatur' }}</span>
                     </p>
                 </div>
-                
-                <h3 class="mb-2" style="font-size: 1.5rem;">Lokasi Kami</h3>
+            </div>
+            
+            <div data-aos="fade-left">
+                <h3 class="mb-3" style="font-size: 1.5rem;">Lokasi Kami</h3>
                 <div style="width: 100%; height: 350px; background-color: var(--border); border-radius: var(--radius-md); overflow: hidden; display: flex; align-items: center; justify-content: center; color: var(--text-muted); box-shadow: var(--shadow-md);">
                     @if(isset($schoolProfile) && $schoolProfile->map_iframe)
                         {!! $schoolProfile->map_iframe !!}
