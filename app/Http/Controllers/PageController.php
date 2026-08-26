@@ -10,7 +10,7 @@ class PageController extends Controller
     {
         $news = \App\Models\Post::where('type', 'news')->latest()->take(3)->get();
         $gallery = \App\Models\GalleryItem::latest()->take(4)->get();
-        $programs = \App\Models\Program::where('is_active', true)->take(4)->get();
+        $programs = \App\Models\Program::where('is_active', true)->get();
         return view('pages.home', compact('news', 'gallery', 'programs'));
     }
 

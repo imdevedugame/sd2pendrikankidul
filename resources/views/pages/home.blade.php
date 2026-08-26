@@ -149,8 +149,8 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up" style="text-align: left; margin-bottom: 3rem;">Layanan & Program <br>Unggulan Sekolah</h2>
         <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;" data-aos="fade-up" data-aos-delay="100">
-            @foreach($programs as $program)
-            <a href="{{ route('program.detail', $program->slug) }}" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+            @foreach($programs as $index => $program)
+            <a href="{{ route('program.detail', $program->slug) }}" class="program-item" style="text-decoration: none; color: inherit; display: {{ $index >= 4 ? 'none' : 'flex' }}; flex-direction: column;">
                 <div class="card-komdigi" style="height: 100%;">
                     @if($program->icon_svg)
                         {!! $program->icon_svg !!}
@@ -164,6 +164,21 @@
             </a>
             @endforeach
         </div>
+        @if(count($programs) > 4)
+        <div style="text-align: center; margin-top: 3rem;" data-aos="fade-up">
+            <button id="show-more-programs" style="background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 0.75rem 2rem; border-radius: 2rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;">
+                Tampilkan Semua Layanan ({{ count($programs) }})
+            </button>
+        </div>
+        <script>
+            document.getElementById('show-more-programs').addEventListener('click', function(e) {
+                e.target.style.display = 'none';
+                document.querySelectorAll('.program-item').forEach(el => {
+                    el.style.display = 'flex';
+                });
+            });
+        </script>
+        @endif
     </div>
 </section>
 
