@@ -9,7 +9,7 @@
             @foreach($posts as $post)
             <div class="card" style="display: flex; flex-direction: column;">
                 @if($post->image)
-                <img src="{{ asset('images/' . $post->image) }}" alt="{{ $post->title }}" class="card-img" style="height: 220px; width: 100%; object-fit: cover;">
+                <img src="{{ file_exists(public_path('images/' . $post->image)) ? asset('images/' . $post->image) : asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="card-img" style="height: 220px; width: 100%; object-fit: cover;">
                 @endif
                 <div class="card-body" style="flex: 1; display: flex; flex-direction: column;">
                     <span class="badge" style="align-self: flex-start;">{{ strtoupper($post->type) }}</span>

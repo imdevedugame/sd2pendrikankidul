@@ -105,7 +105,7 @@
         @foreach($popularNews as $post)
         <a href="{{ route('news.detail', $post->slug) }}" class="overlap-card">
             @if($post->image)
-            <img src="{{ asset('images/' . $post->image) }}" alt="{{ $post->title }}">
+            <img src="{{ file_exists(public_path('images/' . $post->image)) ? asset('images/' . $post->image) : asset('storage/' . $post->image) }}" alt="{{ $post->title }}">
             @else
             <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.2); border-radius: var(--radius-sm);"></div>
             @endif
@@ -198,7 +198,7 @@
             @foreach($news as $post)
             <div class="card" style="display: flex; flex-direction: column;">
                 @if($post->image)
-                <img src="{{ asset('images/' . $post->image) }}" alt="{{ $post->title }}" class="card-img" style="height: 220px; width: 100%; object-fit: cover;">
+                <img src="{{ file_exists(public_path('images/' . $post->image)) ? asset('images/' . $post->image) : asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="card-img" style="height: 220px; width: 100%; object-fit: cover;">
                 @endif
                 <div class="card-body" style="flex: 1; display: flex; flex-direction: column;">
                     <span class="badge" style="align-self: flex-start;">{{ strtoupper($post->type) }}</span>
@@ -222,7 +222,7 @@
         <div class="gallery-bento" data-aos="fade-up" data-aos-delay="100">
             @foreach($gallery as $item)
             <div class="gallery-item">
-                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}">
+                <img src="{{ file_exists(public_path('images/' . $item->image)) ? asset('images/' . $item->image) : asset('storage/' . $item->image) }}" alt="{{ $item->title }}">
                 <div class="gallery-overlay">
                     <h3>{{ $item->title }}</h3>
                     @if(isset($item->description))

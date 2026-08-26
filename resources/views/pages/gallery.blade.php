@@ -8,7 +8,7 @@
         <div class="gallery-bento" data-aos="fade-up" data-aos-delay="100">
             @foreach($gallery as $item)
             <div class="gallery-item">
-                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->title }}">
+                <img src="{{ file_exists(public_path('images/' . $item->image)) ? asset('images/' . $item->image) : asset('storage/' . $item->image) }}" alt="{{ $item->title }}">
                 <div class="gallery-overlay">
                     <h3>{{ $item->title }}</h3>
                     @if($item->description)
