@@ -47,7 +47,11 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Sosial Media</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ isset($schoolProfile) ? $schoolProfile->youtube_url : '#' }}" target="_blank">Youtube Sekolah</a></li>
+                        @if(isset($sosmedLinks))
+                            @foreach($sosmedLinks as $link)
+                                <li><a href="{{ $link->url }}" target="_blank">{{ $link->title }}</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </li>
                 

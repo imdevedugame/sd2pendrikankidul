@@ -27,7 +27,8 @@ class MenuLinkResource extends Resource
                 \Filament\Forms\Components\TextInput::make('url')->required()->url(),
                 \Filament\Forms\Components\Select::make('type')->options([
                     'pengumuman' => 'Pengumuman / Lomba',
-                    'ppdb' => 'Link PPDB'
+                    'ppdb' => 'Link PPDB',
+                    'sosmed' => 'Sosial Media'
                 ])->required(),
                 \Filament\Forms\Components\TextInput::make('order')->numeric()->default(0),
                 \Filament\Forms\Components\Toggle::make('is_active')->default(true),

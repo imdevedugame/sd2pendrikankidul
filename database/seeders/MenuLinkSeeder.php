@@ -19,6 +19,8 @@ class MenuLinkSeeder extends Seeder
             ['title' => 'Sang Juara', 'url' => 'http://sangjuara.semarangkota.go.id/', 'type' => 'ppdb', 'order' => 1],
             ['title' => 'PPDB SDN Pendrikan Lor 02', 'url' => 'http://ppd.semarangkota.go.id/', 'type' => 'ppdb', 'order' => 2],
             ['title' => 'INFO Pendaftaran', 'url' => 'https://ppd.semarangkota.go.id/sd/infopendaftaran.html', 'type' => 'ppdb', 'order' => 3],
+            ['title' => 'Youtube Sekolah', 'url' => 'https://youtube.com', 'type' => 'sosmed', 'order' => 1],
+            ['title' => 'Instagram Sekolah', 'url' => 'https://instagram.com', 'type' => 'sosmed', 'order' => 2],
         ];
 
         foreach ($links as $link) {
