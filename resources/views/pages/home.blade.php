@@ -172,10 +172,24 @@
         </div>
         <script>
             document.getElementById('show-more-programs').addEventListener('click', function(e) {
-                e.target.style.display = 'none';
-                document.querySelectorAll('.program-item').forEach(el => {
-                    el.style.display = 'flex';
-                });
+                const btn = e.target;
+                const isExpanded = btn.getAttribute('data-expanded') === 'true';
+                
+                if (isExpanded) {
+                    // Hide items after index 3
+                    document.querySelectorAll('.program-item').forEach((el, index) => {
+                        if (index >= 4) el.style.display = 'none';
+                    });
+                    btn.textContent = 'Tampilkan Semua Layanan ({{ count($programs) }})';
+                    btn.setAttribute('data-expanded', 'false');
+                } else {
+                    // Show all items
+                    document.querySelectorAll('.program-item').forEach(el => {
+                        el.style.display = 'flex';
+                    });
+                    btn.textContent = 'Tutup Kembali';
+                    btn.setAttribute('data-expanded', 'true');
+                }
             });
         </script>
         @endif
