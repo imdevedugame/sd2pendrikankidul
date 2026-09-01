@@ -34,9 +34,12 @@ class PostResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
-                Forms\Components\TextInput::make('type')
+                Forms\Components\Select::make('type')
+                    ->options([
+                        'news' => 'Berita',
+                        'announcement' => 'Pengumuman',
+                    ])
                     ->required()
-                    ->maxLength(255)
                     ->default('news'),
                 Forms\Components\Toggle::make('is_published')
                     ->required(),

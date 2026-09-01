@@ -33,7 +33,7 @@ class PageController extends Controller
 
     public function news()
     {
-        $posts = \App\Models\Post::where('type', 'news')->latest()->paginate(6);
+        $posts = \App\Models\Post::latest()->paginate(6);
         return view('pages.news', compact('posts'));
     }
 
